@@ -2,7 +2,7 @@
 
 <div align="center">
 
-### <img src="https://raw.githubusercontent.com/rodolfole/next-ecommerce-back/main/app/favicon.ico" height="30px"/> [Ecommerce-Dashboard](https://next-ecommerce-back.vercel.app)
+### <img src="https://raw.githubusercontent.com/rodolfole/next-ecommerce-back/main/app/favicon.ico" height="30px"/> [Demo](https://next-ecommerce-back.vercel.app)
 
 </div>
 
