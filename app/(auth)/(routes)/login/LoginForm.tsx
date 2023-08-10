@@ -1,0 +1,81 @@
+import { signIn } from "next-auth/react";
+import React, { FC } from "react";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
+
+import Button from "@/components/Button";
+import Input from "@/components/Input";
+
+interface LoginFormProps {
+  disabled: boolean;
+  errors: FieldErrors<FieldValues>;
+  onSubmit: () => void;
+  register: UseFormRegister<FieldValues>;
+}
+
+const LoginForm: FC<LoginFormProps> = ({
+  disabled,
+  errors,
+  onSubmit,
+  register,
+}) => {
+  return (
+    <>
+      <div className="text-center">
+        <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">
+          Sign in
+        </h1>
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Don&apos;t have an account yet?
+          <a
+            className="text-blue-600 decoration-2 hover:underline font-medium"
+            href="/register"
+          >
+            Sign up here
+          </a>
+        </p>
+      </div>
+
+      <div className="mt-5">
+        <Button disabled={disabled} onClick={() => signIn("google")}>
+          <FcGoogle className="h-4 w-4" />
+          Sign in with Google
+        </Button>
+
+        <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:mr-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ml-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">
+          Or
+        </div>
+
+        <form>
+          <div className="grid gap-y-4">
+            <Input
+              errors={errors}
+              id="email"
+              label="Email address"
+              name="email"
+              register={register}
+              required
+              type="email"
+            />
+
+            <Input
+              errors={errors}
+              id="password"
+              label="Password"
+              name="password"
+              register={register}
+              required
+              type="password"
+            />
+
+            <Button disabled={disabled} onClick={onSubmit}>
+              Sign in
+            </Button>
+          </div>
+        </form>
+      </div>
+    </>
+  );
+};
+
+export default LoginForm;
